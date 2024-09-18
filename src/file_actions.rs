@@ -54,7 +54,7 @@ pub fn itterate_files(path: &PathBuf, datas: &mut Vec<Data>, banned_extensions: 
                                 itterate_files(&entry.path(), datas, banned_extensions, banned_directories, recursive, data_sum);
                             }
                         }
-                        Err(e) => {
+                        Err(e) => {    
                             println!("Error reading entry {:?}", e);
                         }
                     }
