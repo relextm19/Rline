@@ -21,7 +21,6 @@ pub fn print_data(file_datas:&Vec<Data>){
 
     for data in delayed_display{
         println!("{}", data);
-        data_sum += data.clone();
     }
 
     println!("{}", data_sum);
