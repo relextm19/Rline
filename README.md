@@ -1,6 +1,6 @@
-# **rline Program Usage**
+# **Rline Program Usage**
 
-The `Rline` program allows you to process files in a specified directory with options to exclude certain file extensions, ban specific directories, and enable recursive scanning.
+The `rline` program allows you to process files in a specified directory with options to exclude certain file extensions, ban specific directories, and enable recursive scanning.
 
 ---
 
