@@ -25,7 +25,7 @@ fn is_allowed_directory(path: &PathBuf, banned_directories: &Vec<String>) -> boo
     true
 }
 
-pub fn itterate_files(path: &PathBuf, datas: &mut Vec<Data>, banned_extensions: &Vec<String>, banned_directories: &Vec<String>, recursive:bool, data_sum: &mut Data){
+pub fn itterate_files(path: &PathBuf, datas: &mut Vec<Data>, banned_extensions: &Vec<String>, banned_directories: &Vec<String>, recursive:bool){
     if path.is_dir() && is_allowed_directory(path, banned_directories){
         match fs::read_dir(path){
             Ok(entries) =>{
@@ -51,7 +51,7 @@ pub fn itterate_files(path: &PathBuf, datas: &mut Vec<Data>, banned_extensions: 
                                 
                                 datas.push(file_data);
                             } else if entry.path().is_dir() && is_allowed_directory(&entry.path(), banned_directories) && recursive{ //recursively check another directory
-                                itterate_files(&entry.path(), datas, banned_extensions, banned_directories, recursive, data_sum);
+                                itterate_files(&entry.path(), datas, banned_extensions, banned_directories, recursive);
                             }
                         }
                         Err(e) => {    
@@ -60,7 +60,6 @@ pub fn itterate_files(path: &PathBuf, datas: &mut Vec<Data>, banned_extensions: 
                     }
                 }
                 datas.push(directory_data.clone());
-                *data_sum += directory_data;
             }
             Err(e) => {
                 println!("Error reading directory {:?}", e)
