@@ -1,4 +1,4 @@
-use crate::file_data::{self, Data};
+use crate::file_data::Data;
 use std::fs;
 use std::io::{self, BufRead};
 use std::path::PathBuf;
@@ -17,8 +17,9 @@ fn has_allowed_extension(path: &PathBuf, banned_extensions: &Vec<String>) -> boo
 }
 
 fn is_allowed_directory(path: &PathBuf, banned_directories: &Vec<String>) -> bool{
-    for directory in banned_directories{
-        if path.file_name().unwrap_or_default().to_string_lossy() == *directory{
+    let path_str = path.to_string_lossy();
+    for directory in banned_directories {
+        if path_str.contains(directory) {
             return false;
         }
     }
