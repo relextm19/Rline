@@ -3,6 +3,7 @@ use std::ops::AddAssign;
 
 #[derive(Clone, Debug)]
 pub struct Data {
+    pub display_last: bool,
     pub name: String,
     pub line_count: usize,
     pub character_count: usize,

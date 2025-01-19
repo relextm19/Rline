@@ -30,6 +30,7 @@ pub fn itterate_files(path: &PathBuf, datas: &mut Vec<Data>, banned_extensions: 
         match fs::read_dir(path){
             Ok(entries) =>{
                 let mut directory_data = Data {
+                    display_last: true,
                     name: path.file_name()
                         .unwrap_or_default()
                         .to_string_lossy()
@@ -76,6 +77,7 @@ fn get_file_data(path: &PathBuf) -> Data {
             
             let name = path.file_name().unwrap_or_default().to_string_lossy().to_string();
             let mut file_data = Data {
+                display_last: false,
                 name,
                 line_count: 0,
                 character_count: 0,
@@ -102,6 +104,7 @@ fn get_file_data(path: &PathBuf) -> Data {
             let name = String::from("");
             // Return an empty Data in case of error
             Data {
+                display_last: false,
                 name,
                 line_count: 0,
                 character_count: 0,
